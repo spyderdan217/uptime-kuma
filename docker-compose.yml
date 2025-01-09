@@ -12,9 +12,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - data:/app/data
     deploy:
-      labels:
-        com.example.description: "This label will appear on the web service"
-        com.example.url: "https://uptime.westness.us"
       resources:
         limits:
           cpus: "1.0"
