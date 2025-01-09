@@ -1,0 +1,24 @@
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:${TAG}
+    restart: always
+    environment: # https://github.com/louislam/uptime-kuma/wiki/Environment-Variables
+      TZ: America/Detroit
+      UPTIME_KUMA_PORT: 31050
+      UPTIME_KUMA_DB_TYPE: sqlite
+    ports:
+      - 31050:31050
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - data:/app/data
+    deploy:
+      labels:
+        com.example.description: "This label will appear on the web service"
+        com.example.url: "https://uptime.westness.us"
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+
+volumes:
+  data:
